@@ -6,7 +6,7 @@ commit=$1
 patch_file=$(mktemp)
 cat > "$patch_file"
 
-curl -X POST "http://${CODEX_PATCH_SERVER}/apply-patch" \
+curl -X POST "${CODEX_PATCH_SERVER}apply-patch" \
   -H "X-Secret-Key: ${CODEX_PATCH_SERVER_SECRET}" \
   -F "commit=${commit}" \
   -F "patchFile=@${patch_file}"
