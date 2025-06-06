@@ -1,6 +1,7 @@
 #!/bin/bash
 # Usage: send_patch.sh <commit-or-branch>
 # Reads patch from stdin and sends to CODEX_PATCH_SERVER.
+set -ex;
 commit=$1
 patch_file=$(mktemp)
 cat > "$patch_file"
