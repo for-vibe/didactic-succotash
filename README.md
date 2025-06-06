@@ -11,3 +11,16 @@ scripts/send_patch.sh <commit-or-branch> < changes.patch
 ```
 
 Environment variables `CODEX_PATCH_SERVER` and `CODEX_PATCH_SERVER_SECRET` must be set for authentication.
+
+## Automatic patch sending
+
+If the environment variable `CODEX_PATCH_SERVER_ENABLE` is set to `1`, you can
+send patches automatically after each commit. Link `scripts/post_commit_hook.sh`
+to `.git/hooks/post-commit`:
+
+```bash
+ln -s ../../scripts/post_commit_hook.sh .git/hooks/post-commit
+```
+
+The hook uses `scripts/send_patch.sh` to forward the latest commit to the
+configured `${CODEX_PATCH_SERVER}`.
